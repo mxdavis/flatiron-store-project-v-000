@@ -8,4 +8,14 @@ class Cart < ActiveRecord::Base
     line_items.collect {|line_item| total += line_item.item.price * line_item.quantity}
     total
   end
+
+  def add_item(item_id)
+    line_item = line_items.find_by(item_id: item_id)
+    if line_item
+      line_item.quantity += 1
+    else
+      line_item = line_items.build(item_id: item_id)
+    end
+    line_item
+  end
 end
