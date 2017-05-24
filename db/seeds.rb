@@ -21,3 +21,11 @@ end
   )
   Category.create(title: Faker::Commerce.department)
 end
+
+10.times do
+  LineItem.create(
+    cart_id: rand(1..10),
+    item_id: rand(1..10),
+    quantity: rand(1..10)
+  )
+  end
