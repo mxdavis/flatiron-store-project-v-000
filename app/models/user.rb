@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :carts
 
-  def current_cart=(current_cart)
-    self.carts
+  def current_cart=(cart)
+    Cart.where(cart: cart)
   end
 
   def current_cart
-    self.carts
+   self.carts.last
   end
 end
