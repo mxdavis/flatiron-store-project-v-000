@@ -5,11 +5,7 @@ class Cart < ActiveRecord::Base
 
   def total
     total = 0
-    items.each do |item|
-      item.price
-    end
-  end
-
-  def add_item
+    line_items.collect {|line_item| total += line_item.item.price * line_item.quantity}
+    total
   end
 end
