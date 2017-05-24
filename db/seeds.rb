@@ -28,4 +28,4 @@ end
     item_id: rand(1..10),
     quantity: rand(1..10)
   )
-  end
+end
