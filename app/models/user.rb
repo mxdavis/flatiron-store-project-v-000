@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :carts
-  # has_one :current_cart, clas s_name: "Cart"
+  # has_one :current_cart, class_name: "Cart"
   def current_cart=(cart)
     Cart.where(cart: cart)
   end
