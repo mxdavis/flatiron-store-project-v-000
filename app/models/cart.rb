@@ -25,5 +25,5 @@ class Cart < ActiveRecord::Base
       line_item.item.save
     end  
     update(status: "submitted")
-  end
+  end 
 end
