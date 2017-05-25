@@ -18,7 +18,6 @@ class CartsController < ApplicationController
 		@cart.status = "submitted"
 		@cart.check_out
 		current_user.current_cart = nil
-		set_cart
 		redirect_to cart_path(@cart)
 	end
 
