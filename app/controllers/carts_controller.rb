@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   
 	def show
-		current_cart
+		set_cart
 	end
 
 	def new
@@ -9,17 +9,23 @@ class CartsController < ApplicationController
 	end
 
 	def create
-		@cart = Cart.new(cart_params)
+		current_user.current_cart = Cart.new(cart_params)
+
 	end
 
 	def checkout
-		@cart = current_cart
+		set_cart
+		@cart.status = "submitted"
 		@cart.check_out
-		#current_user.current_cart = nil
+		current_user.current_cart = nil
 		redirect_to cart_path(@cart)
 	end
 
 	private
+
+	def set_cart
+		@cart = Cart.find(params[:id])
+	end
 
 	def cart_params
 		params.require(:cart).permit(:user_id)
